@@ -1,0 +1,12 @@
+{% extends 'index.jinja' %}
+
+{% macro render_feed_item(item) %}
+<h1>ID: {{  item['id'] }}</h2>
+<h1>Time: {{ item['time'] }}</h2>
+<h1>Message: {{ item['message'] }}</h2>
+{% endmacro %}
+
+
+{% block body %}
+{{ render_feed_item(feed_item) }}
+{% endblock %}

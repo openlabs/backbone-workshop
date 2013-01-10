@@ -1,0 +1,33 @@
+{% extends 'index.jinja' %}
+
+{% macro render_feed_item(item) %}
+<h1>ID: {{  item['id'] }}</h2>
+<h1>Time: {{ item['time'] }}</h2>
+<h1>Message: {{ item['message'] }}</h2>
+{% endmacro %}
+
+{% block body %}
+<h1>News Feed</h2>
+
+<script type="text/template" id="feeditem">
+  <td><%= feed_item.id %></td>
+  <td><%= feed_item.get('time') %></td>
+  <td>
+    <span class="message"><%= feed_item.get('message') %></span>
+    <input name="message" class="edit-mode" value="<%= feed_item.get('message') %>" style="display:none"></input>
+    <button class="edit-mode" style="display:none">S</button>
+  </td>
+</script>
+
+<table id="feeds" border="1">
+  
+</table>
+<br/>
+<br/>
+<br/>
+<form method="POST" action="/news-feed/">
+  <textarea name="message" placeholder="Type your message here"></textarea>
+  <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
